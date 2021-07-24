@@ -1,0 +1,300 @@
+SAMPLE CODE
+
+package distributeddeduplication;
+import javax.swing.JFrame;
+public class Owner extends javax.swing.JFrame {
+    public Owner() {
+        initComponents();
+        jLabel6.setVisible(false);
+    }
+private void initComponents() {
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(600, 380));
+        setPreferredSize(new java.awt.Dimension(600, 380));
+        getContentPane().setLayout(null);
+        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); 
+        jLabel1.setText("Owner Login");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(180, 40, 180, 40);
+        jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 12));
+        jLabel2.setText("Username");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(70, 110, 100, 40);
+
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 12)); 
+        jLabel3.setText("Password");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(70, 170, 90, 40);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(180, 110, 180, 30);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(180, 170, 180, 30);
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
+        jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(130, 240, 90, 40);
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
+        jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(270, 240, 90, 40);
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); 
+        jLabel4.setText("New User");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(180, 310, 60, 20);
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 12)); 
+        jLabel5.setText("Click Here");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(240, 310, 60, 30);
+        jLabel6.setForeground(new java.awt.Color(255, 51, 102));
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(150, 80, 390, 20);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/owner.png"))); 
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(390, 110, 130, 150);
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
+        jLabel8.setForeground(new java.awt.Color(255, 0, 102));
+        jLabel8.setText("Exit");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(470, 30, 24, 17);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgound.jpg"))); 
+        jLabel9.setText("jLabel9");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(0, 0, 580, 350);
+        setSize(new java.awt.Dimension(590, 383));
+        setLocationRelativeTo(null);
+    }
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {
+        dispose();
+        new Reg().setVisible(true);
+    }
+    public void setTitle() {
+        new Owner().setTitle("Owner Login");
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+        jLabel6.setText("");
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+                if (jTextField1.getText() == null || jTextField1.getText().trim().equals("")) {
+            jLabel6.setText("Please Enter  Username");
+            jLabel6.setVisible(true);
+        } else if (jPasswordField1.getText() == null || jPasswordField1.getText().trim().equals("")) {
+             jLabel6.setText("Please Enter  Password");
+            jLabel6.setVisible(true);
+        } else {
+            RegValidation rv = new RegValidation();
+            String status = rv.userValidate(jTextField1.getText(), jPasswordField1.getText(), 1);
+            if (status.equals("Success")) {
+                dispose();
+                new Ohome(jTextField1.getText()).setVisible(true);
+            } else {
+                jLabel6.setText("Please Enter Correct Username and Password");
+                jLabel6.setVisible(true);
+            }
+        }
+    }
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {
+                dispose();
+        new Main().setVisible(true);
+    }
+
+     
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+     java.util.logging.Logger.getLogger(Owner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Owner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+     java.util.logging.Logger.getLogger(Owner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+  java.util.logging.Logger.getLogger(Owner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Owner().setVisible(true);
+                new Owner().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+    }
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
+}
+package distributeddeduplication;
+import javax.swing.JFrame;
+public class Main extends javax.swing.JFrame {
+    public Main() {
+        initComponents();
+    }
+BEGIN:initComponents
+    private void initComponents() {
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(750, 450));
+        setPreferredSize(new java.awt.Dimension(750, 450));
+        getContentPane().setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); 
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setText("Normalization of Duplicate Records");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(60, 10, 610, 60);
+        jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel2.setText("from Multiple Sources");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(160, 60, 420, 60);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 20, 710, 120);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 14));
+        jLabel3.setText("Owner");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(80, 30, 80, 30);
+        jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 14)); 
+        jLabel4.setText("User");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(270, 30, 70, 30);
+        jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 12)); 
+        jLabel5.setText("Cloud");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(450, 30, 60, 30);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); 
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(220, 60, 160, 150);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/owner.png"))); 
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(40, 60, 160, 150);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cloud.png"))); 
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(410, 60, 160, 150);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(70, 170, 590, 210);
+        setSize(new java.awt.Dimension(746, 438));
+        setLocationRelativeTo(null);
+    }
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
+        dispose();
+        new Owner().setVisible(true);
+    }
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
+        dispose();
+        new User().setVisible(true);
+    }
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {        
+        dispose();
+        new Cloud().setVisible(true);
+    }
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+    java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Main().setVisible(true);
+                new Main().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        });
+    }
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+}
